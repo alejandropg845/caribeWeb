@@ -1,0 +1,6 @@
+@CaribeWebServer_HostAddress = http://localhost:5032
+
+GET {{CaribeWebServer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
