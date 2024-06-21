@@ -13,6 +13,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AddProvidersComponent } from './add-providers/add-providers.component';
 
 
 
@@ -24,7 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
                 ProductComponent,
                 HeaderComponent,
                 FooterComponent,
-                CategoriesComponent],
+                CategoriesComponent,
+                AddProvidersComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
@@ -32,7 +34,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     RouterLink,
     NgxDropzoneModule,
     LeafletModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class PagesModule { }

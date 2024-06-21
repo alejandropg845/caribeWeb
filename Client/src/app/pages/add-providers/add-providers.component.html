@@ -1,0 +1,31 @@
+<div>
+  <h1 class="text-3xl font-medium mb-2 text-center">Información del proveedor</h1>
+  {{this.ProviderForm.valid}}
+    <form (submit)="onSubmit()" [formGroup]="ProviderForm">
+        
+        <div class="mx-2 md:w-[60%] md:mx-auto">
+          <input [class]="validateField('name')" formControlName="name" class="px-2 py-1 bg-gray-200 border-2 outline-none border-black rounded-lg my-4" type="text" placeholder="Nombre del proveedor">
+          <p class="text-sm font-bold text-black mb-4">Selecciona un punto en el mapa, o bien, usa el buscador y selecciona un punto</p>
+          <div class="map-container mx-1">
+              <div class="map-frame border-2 border-gray-500">
+                <div id="map" class="w-full h-64 520:h-96"></div>
+              </div>
+            </div>
+          <input [class]="validateField('address')" formControlName="address" class="px-2 py-1 520:mr-2 bg-gray-200 border-2 outline-none border-black rounded-lg my-4" type="text" placeholder="Dirección">
+          <input [class]="validateField('phone')" maxlength="10" formControlName="phone" class="px-2 py-1 bg-gray-200 border-2 outline-none border-black rounded-lg" type="tel" placeholder="Número de telefono">
+          <div class="my-5 flex flex-col items-start" *ngIf="providersLocalStorage">
+            <ul>
+              <li *ngFor="let provider of providersLocalStorage; let i = index" class="text-sm px-2 mb-1 bg-gray-300 border border-black font-bold w-max rounded-md">Proveedor {{i+1}}: <span class="font-normal">{{provider.name}}</span></li>
+            </ul>
+            <button type="button" (click)="deleteProvidersLS()" class="text-sm border-2 text-white bg-red-500 px-3 border-black rounded-lg font-semibold">Eliminar todos los proveedores</button>
+          </div>
+        </div>
+        <div class="flex justify-center mt-2 gap-3 md:gap-10">
+          <button type="button" (click)="saveProvider()" class="bg-white py-1 px-4 rounded-xl font-semibold border-2 border-black">Agregar proveedor</button>
+          <button [disabled]="!providersLocalStorage" type="submit" class="bg-yellow-200 py-1 px-4 rounded-xl font-semibold border-2 border-black">Enviar proveedores añadidos</button>
+
+        </div>
+    </form>
+</div>
+
+

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CaribeWebServer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240619033445_Init")]
+    [Migration("20240620190214_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -108,15 +108,20 @@ namespace CaribeWebServer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Lat")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Lng")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Phone")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Position")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long>("Phone")
+                        .HasColumnType("bigint");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");

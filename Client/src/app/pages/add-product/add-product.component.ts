@@ -1,9 +1,10 @@
-import { AfterViewInit, Component, OnChanges, SimpleChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import * as L from 'leaflet';
-import 'leaflet-control-geocoder';
+
 import { ProductsService } from '../../services/products.service';
-import { combineLatest, forkJoin } from 'rxjs';
+import { forkJoin, tap } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -11,56 +12,65 @@ import { combineLatest, forkJoin } from 'rxjs';
 })
 export class AddProductComponent{
 
-  private map!: L.Map;
-  marker: L.Marker | null = null;
-  markerPosition = { lat: 0, lng: 0 };
+  
   files: File[] = [];
-  nextPage:boolean = false;
   form:FormGroup = this.fb.group({
-    //Product info
     title:[null,Validators.required],
-    imageUrl:[null,Validators.required],
-    price:[null,Validators.required],
-    category:["",Validators.required],
-
-    //Provider info
-    name:[null,Validators.required],
-    position:[[null],Validators.required],
-    address:[null,Validators.required],
-    phone:[null,Validators.required]
+    imageUrl:[""],
+    description:[null,Validators.required],
+    price:[null,[Validators.required, Validators.min(1)]],
+    categoryId:["",Validators.required]
   });
 
   onSubmit(){
+
+    if(!this.form.valid){ 
+      this.toastr.error("No has llenado todos los campos", "Campos vacíos"); 
+      this.form.markAllAsTouched();
+      return;
+    }
+
+    if(!this.files[0]){
+      this.toastr.error("Has olvidado agregar una imagen", "Campos faltantes"); 
+      return;
+    }
+
+    if(this.files.length!==1){
+      this.toastr.error("Has agregado más de una imagen. Debes agregar sólo una.", "Error"); 
+      return;
+    }
+
+    //Create an observables of Cloudinary Images Urls
     const urlObservable = this.files.map(file => {
       let images = new FormData();
       images.append('file', file);
-      images.append('upload_preset','cloudinary_products');
+      images.append('upload_preset','caribeWeb_products');
       return this.productsService.uploadToCloudinary(images);
     });
-    forkJoin([urlObservable]).subscribe({
-      next: url => {
-        const imageUrl = url;
-        this.form.get('imageUrl')?.setValue(imageUrl);
-        this.form.get('position')?.setValue(this.markerPosition);
-        console.log(this.form.value);
-      },
-      error: error => {
+    forkJoin(urlObservable)
+    .pipe(
 
-      }
-    })
-    this.form.value;
-  }
+      tap(cloudinaryInfo => {
 
-  addProviderInfo(){
-    let form = this.form;
-    const providerInfo = {
-      title: form.get("name")?.value,
-      position: this.markerPosition,
-      address: form.get('address')?.value,
-      phone: form.get("phone")?.value
-    }
-    localStorage.setItem('provider'+Math.random(), JSON.stringify(providerInfo));
-    
+      const imageUrl = cloudinaryInfo.map((url:any) => url.secure_url);
+      this.form.get("imageUrl")?.setValue(imageUrl[0]);
+
+    })).subscribe({
+      next: _ => {
+        
+        // Send info to DB
+        this.productsService.uploadProductToDB(this.form.value)
+        .subscribe({
+          next: (res:any) => {
+          this.toastr.success(res.message, "Listo");
+          this.router.navigateByUrl("/caribeWeb/add_provider/"+res.id);
+          localStorage.setItem('boolean', "true");
+          this.form.get("categoryId")?.setValue("");
+        }
+      });
+
+    }});
+
   }
 
   validateField(field:string){
@@ -78,73 +88,10 @@ export class AddProductComponent{
     this.files.splice(this.files.indexOf(event), 1);
   }
 
-
-  providerForm() {
-    this.nextPage = true;
-    setTimeout(() => {
-      this.initMap();
-    }, 0);
-  }
-
-  back() {
-    this.nextPage = false;
-  }
-
-  initMap(){
-    if (this.map) {
-      this.map.remove();
-    }
-    this.map = L.map('map', {
-      center: [8.76701011626534, -75.86746215820314],
-      zoom: 11
-    });
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors'
-    }).addTo(this.map);
-
-    const geocoder = (L.Control as any).geocoder({
-      defaultMarkGeocode: false
-    }).addTo(this.map);
-
-    geocoder.on('markgeocode', (e: any) => {
-      const bbox = e.geocode.bbox;
-      const poly = L.polygon([
-        bbox.getSouthEast(),
-        bbox.getNorthEast(),
-        bbox.getNorthWest(),
-        bbox.getSouthWest()
-      ]).addTo(this.map);
-      this.map.fitBounds(poly.getBounds());
-    });
-
-    this.map.on('click', (e: L.LeafletMouseEvent) => {
-      this.addOrMoveMarker(e.latlng.lat, e.latlng.lng);
-    });
-  }
-
-  addOrMoveMarker(lat: number, lng: number): void {
-    this.markerPosition = { lat, lng };
-    if (this.marker) {
-      this.marker.setLatLng([lat, lng]);
-    } else {
-      this.marker = L.marker([lat, lng], {
-        icon: L.icon({
-          iconSize: [25, 41],
-          iconAnchor: [13, 41],
-          iconUrl: 'assets/marker-icon.png',
-          shadowUrl: 'assets/marker-shadow.png'
-        }),
-        draggable: true
-      }).addTo(this.map);
-      this.marker.on('moveend', (event: any) => {
-        const position = event.target.getLatLng();
-        this.markerPosition = { lat: position.lat, lng: position.lng };
-      });
-    }
-  }
-
   constructor(private fb: FormBuilder,
-              private productsService:ProductsService
+              private productsService:ProductsService,
+              private toastr:ToastrService,
+              private router:Router
   ) {}
 
 }

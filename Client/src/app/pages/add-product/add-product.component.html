@@ -1,17 +1,20 @@
 <div class="w-[70%] mx-auto md:w-[50%] lg:w-[40%]">
-    <h1 *ngIf="!nextPage" class="text-center font-medium text-3xl my-4">Agregar un producto</h1>
+    <h1 class="text-center font-medium text-3xl my-4">Agregar un producto</h1>
     <form (submit)="onSubmit()" [formGroup]="form" class="flex flex-col justify-center">
 
-        <div *ngIf="!nextPage">
-            <input formControlName="title" type="text" class="px-2 py-1 bg-gray-200 border-black border-2 rounded-lg mb-2" placeholder="Título del producto">
+        <div>
+            <input [class]="validateField('title')" formControlName="title" type="text" class="px-2 py-1 bg-gray-200 border-black border-2 rounded-lg mb-2" placeholder="Título del producto">
             <ngx-dropzone class="flex justify-center" (change)="onSelect($event)">
                 <ngx-dropzone-label>Agregar imagen del producto</ngx-dropzone-label>
                 <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f">
                 </ngx-dropzone-image-preview>
             </ngx-dropzone>
+            <textarea [class]="validateField('description')"  formControlName="description" class="px-2 520:mt-5 py-1 520:py-0 520:my-0 bg-gray-200 border-black border-2 w-full rounded-lg my-4 h-24 resize-none" type="number" placeholder="Descripción del producto"></textarea>
+
             <div class="flex flex-col 520:flex-row 520:gap-2 520:mt-4 justify-center">
-                <input formControlName="price" class="px-2 py-1 520:py-0 520:my-0 bg-gray-200 border-black border-2 rounded-lg my-4" type="number" placeholder="Precio del producto">
-                <select formControlName="category" class="px-2 py-1 text-lg font-medium border-2 520:text-base border-black">
+
+                <input [class]="validateField('price')"  formControlName="price" class="px-2 py-1 520:py-0 520:my-0 bg-gray-200 border-black border-2 rounded-lg my-4" type="number" placeholder="Precio del producto">
+                <select [class]="validateField('category')" formControlName="categoryId" class="px-2 py-1 text-lg font-medium border-2 520:text-base border-black">
                     <option value="">Selecciona una categoría</option>
                     <option class="px-2 py-1 font-medium" value="1">Sopas</option>
                     <option class="px-2 py-1 font-medium" value="2">Bebidas artesanales</option>
@@ -20,28 +23,11 @@
                 </select>
             </div>
             <div class="flex justify-center">
-                <button (click)="providerForm()" class="px-2 py-1 border-2 mt-4 border-black rounded-lg font-medium bg-yellow-200 hover:bg-yellow-300 transition ease-in-out duration-300">Siguiente<i class="fa-solid fa-arrow-right ml-1"></i></button>
-                <button *ngIf="this.form.valid" type="submit" (click)="onSubmit()" class="px-2 py-1 border-2 mt-4 border-black rounded-lg font-medium bg-yellow-200 hover:bg-yellow-300 transition ease-in-out duration-300">Enviar todo<i class="fa-solid fa-arrow-right ml-1"></i></button>
+                <button type="submit" class="px-2 py-1 border-2 mt-4 border-black rounded-lg font-medium bg-yellow-200 hover:bg-yellow-300 transition ease-in-out duration-300">Agregar producto<i class="fa-solid fa-arrow-right ml-1"></i></button>
             </div>
         </div>
 
-        <div *ngIf="nextPage">
-            <button class="ml-2 px-3 py-1 font-medium w-max border-2 hover:bg-gray-400 transition ease-in-out duration-300 border-black rounded-lg" (click)="back()"><i class="fa-solid fa-arrow-left mr-1"></i>Volver</button>
-            <div>
-                <h1 class="text-xl font-medium mb-2">Información del proveedor</h1>
-                <input formControlName="name" class="px-2 py-1 bg-gray-200 outline-black border-2 rounded-lg my-4" type="text" placeholder="Nombre del proveedor">
-                <div class="map-container m-8">
-                    <div class="map-frame border-2 border-black">
-                      <div id="map" class="w-full h-96"></div>
-                    </div>
-                  </div>
-                <input formControlName="address" class="px-2 py-1 bg-gray-200 outline-black border-2 rounded-lg my-4" type="text" placeholder="Dirección">
-                <input formControlName="phone" class="px-2 py-1 bg-gray-200 outline-black border-2 rounded-lg my-4" type="tel" placeholder="Número de telefono">
-            </div>
-            <button [disabled]="this.form.get('name')?.invalid || this.form.get('address')?.invalid || this.form.get('phone')?.invalid" (click)="addProviderInfo()" class="px-2 py-1 border-2 mt-4 border-black rounded-lg font-medium bg-yellow-200 hover:bg-yellow-300 transition ease-in-out duration-300">Continuar<i class="fa-solid fa-arrow-right ml-1"></i></button>
-        </div>
+        
     </form>
 </div>
-
-<p>{{this.form.value | json}}</p>
 

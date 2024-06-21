@@ -1,4 +1,5 @@
-﻿using CaribeWebServer.Models;
+﻿using CaribeWebServer.DTOs.ProvidersDto;
+using CaribeWebServer.Models;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CaribeWebServer.DTOs.ProductDto

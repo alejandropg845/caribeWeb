@@ -35,7 +35,7 @@ namespace CaribeWebServer.Controllers
         public async Task<ActionResult<int>> AddProduct([FromBody] CreateProductDto dto)
         {
             var newProduct = await _productsRepo.AddProductAsync(dto);
-            return Ok(newProduct.Id);
+            return Ok(new {Message="Agregado correctamente", Id = newProduct.Id });
         }
 
         [HttpPut("{id:int}")]
@@ -43,7 +43,7 @@ namespace CaribeWebServer.Controllers
         {
             var updatedProduct = await _productsRepo.UpdateProductAsync(id, dto);
             if (updatedProduct == null) return NotFound(new { Message = "El producto no existe" });
-            return Ok(updatedProduct.ToProductDto());
+            return Ok(new {Message="Editado correctamente", Product = updatedProduct.ToProductDto() });
         }
 
         [HttpDelete("{id:int}")]

@@ -6,6 +6,7 @@ import { ProductComponent } from "./product/product.component";
 import { SavedComponent } from "./saved/saved.component";
 import { MainComponent } from "./main/main.component";
 import { CategoriesComponent } from "./categories/categories.component";
+import { AddProvidersComponent } from "./add-providers/add-providers.component";
 
 export const routes: Routes = [
     {
@@ -16,6 +17,10 @@ export const routes: Routes = [
             {
                 path: 'add',
                 component: AddProductComponent
+            },
+            {
+                path:'add_provider/:id',
+                component: AddProvidersComponent
             },
             {
                 path: 'product/:id',

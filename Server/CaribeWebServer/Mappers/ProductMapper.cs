@@ -14,7 +14,7 @@ namespace CaribeWebServer.Mappers
                 ImageUrl = product.ImageUrl,
                 Category = product.Category!.Name,
                 Description = product.Description,
-                Price = product.Price,
+                Price = product.Price
             };
         }
 

@@ -4528,11 +4528,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Alejandro Páez\\Desktop\\Alex\\ASP.NET Core\\E-commerceAPI\\CaribeWebServer\\CaribeWebServer\\CaribeWebServer.csproj",
+      "projectUniqueName": "C:\\Users\\Alejandro Páez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\CaribeWebServer.csproj",
       "projectName": "CaribeWebServer",
-      "projectPath": "C:\\Users\\Alejandro Páez\\Desktop\\Alex\\ASP.NET Core\\E-commerceAPI\\CaribeWebServer\\CaribeWebServer\\CaribeWebServer.csproj",
+      "projectPath": "C:\\Users\\Alejandro Páez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\CaribeWebServer.csproj",
       "packagesPath": "C:\\Users\\Alejandro Páez\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Alejandro Páez\\Desktop\\Alex\\ASP.NET Core\\E-commerceAPI\\CaribeWebServer\\CaribeWebServer\\obj\\",
+      "outputPath": "C:\\Users\\Alejandro Páez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Alejandro Páez\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xhSi8Qla/zI=",
+  "dgSpecHash": "7Y5ZXeOjqrA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Alejandro Páez\\Desktop\\Alex\\ASP.NET Core\\E-commerceAPI\\CaribeWebServer\\CaribeWebServer\\CaribeWebServer.csproj",
+  "projectFilePath": "C:\\Users\\Alejandro Páez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\CaribeWebServer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Alejandro Páez\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Alejandro Páez\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

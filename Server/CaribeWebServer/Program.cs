@@ -18,7 +18,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 //SCOPES
 builder.Services.AddScoped<IProductsRepository, ProductsRepository>();
-
+builder.Services.AddScoped<IProviderRepository, ProviderRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -27,6 +27,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(options =>
+{
+    options.AllowAnyHeader();
+    options.AllowAnyMethod();
+    options.AllowAnyOrigin();
+});
 
 app.UseHttpsRedirection();
 

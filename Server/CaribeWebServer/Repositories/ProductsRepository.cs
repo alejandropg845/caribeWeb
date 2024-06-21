@@ -13,7 +13,7 @@ namespace CaribeWebServer.Repositories
         public ProductsRepository(ApplicationDbContext context) { _context = context; }
         public async Task<IReadOnlyList<Product>> GetProductsAsync()
         {
-            var products = await _context.Products.Include(p => p.Category).ToListAsync();
+            var products = await _context.Products.Include(p => p.Providers).Include(p => p.Category).ToListAsync();
             return products;
         }
         public async Task<Product> GetProductByIdAsync(int id)
@@ -44,6 +44,7 @@ namespace CaribeWebServer.Repositories
             product.ImageUrl = dto.ImageUrl;
             product.Title = dto.Title;
             await _context.SaveChangesAsync();
+            await _context.Entry(product).Reference(p => p.Category).LoadAsync();
             return product;
         }
 
