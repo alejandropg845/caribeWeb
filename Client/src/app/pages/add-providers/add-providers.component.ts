@@ -6,7 +6,7 @@ import 'leaflet-control-geocoder';
 import { switchMap } from 'rxjs';
 import { ProductsService } from '../../services/products.service';
 import { ToastrService } from 'ngx-toastr';
-import { createProvider } from '../../interfaces/provider.interface';
+import { createProvider } from '../../interfaces/createProvider.interface';
 @Component({
   selector: 'app-add-providers',
   templateUrl: './add-providers.component.html',

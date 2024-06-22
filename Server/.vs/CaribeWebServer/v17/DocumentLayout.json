@@ -3,16 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\Alejandro P\u00E1ez\\Desktop\\Alex\\CaribeWeb\\Server\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{69740ED3-90FA-4062-A071-630254A456D2}|CaribeWebServer\\CaribeWebServer.csproj|c:\\users\\alejandro p\u00E1ez\\desktop\\alex\\caribeweb\\server\\caribewebserver\\controllers\\providerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{69740ED3-90FA-4062-A071-630254A456D2}|CaribeWebServer\\CaribeWebServer.csproj|solutionrelative:caribewebserver\\controllers\\providerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{69740ED3-90FA-4062-A071-630254A456D2}|CaribeWebServer\\CaribeWebServer.csproj|c:\\users\\alejandro p\u00E1ez\\desktop\\alex\\caribeweb\\server\\caribewebserver\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{69740ED3-90FA-4062-A071-630254A456D2}|CaribeWebServer\\CaribeWebServer.csproj|solutionrelative:caribewebserver\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{69740ED3-90FA-4062-A071-630254A456D2}|CaribeWebServer\\CaribeWebServer.csproj|c:\\users\\alejandro p\u00E1ez\\desktop\\alex\\caribeweb\\server\\caribewebserver\\dtos\\providersdto\\createproviderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{69740ED3-90FA-4062-A071-630254A456D2}|CaribeWebServer\\CaribeWebServer.csproj|solutionrelative:caribewebserver\\dtos\\providersdto\\createproviderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{69740ED3-90FA-4062-A071-630254A456D2}|CaribeWebServer\\CaribeWebServer.csproj|c:\\users\\alejandro p\u00E1ez\\desktop\\alex\\caribeweb\\server\\caribewebserver\\repositories\\productsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{69740ED3-90FA-4062-A071-630254A456D2}|CaribeWebServer\\CaribeWebServer.csproj|solutionrelative:caribewebserver\\repositories\\productsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{69740ED3-90FA-4062-A071-630254A456D2}|CaribeWebServer\\CaribeWebServer.csproj|c:\\users\\alejandro p\u00E1ez\\desktop\\alex\\caribeweb\\server\\caribewebserver\\mappers\\productmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{69740ED3-90FA-4062-A071-630254A456D2}|CaribeWebServer\\CaribeWebServer.csproj|solutionrelative:caribewebserver\\mappers\\productmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{69740ED3-90FA-4062-A071-630254A456D2}|CaribeWebServer\\CaribeWebServer.csproj|c:\\users\\alejandro p\u00E1ez\\desktop\\alex\\caribeweb\\server\\caribewebserver\\dtos\\productdto\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{69740ED3-90FA-4062-A071-630254A456D2}|CaribeWebServer\\CaribeWebServer.csproj|solutionrelative:caribewebserver\\dtos\\productdto\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{69740ED3-90FA-4062-A071-630254A456D2}|CaribeWebServer\\CaribeWebServer.csproj|c:\\users\\alejandro p\u00E1ez\\desktop\\alex\\caribeweb\\server\\caribewebserver\\interfaces\\iproductsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{69740ED3-90FA-4062-A071-630254A456D2}|CaribeWebServer\\CaribeWebServer.csproj|solutionrelative:caribewebserver\\interfaces\\iproductsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{69740ED3-90FA-4062-A071-630254A456D2}|CaribeWebServer\\CaribeWebServer.csproj|c:\\users\\alejandro p\u00E1ez\\desktop\\alex\\caribeweb\\server\\caribewebserver\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{69740ED3-90FA-4062-A071-630254A456D2}|CaribeWebServer\\CaribeWebServer.csproj|solutionrelative:caribewebserver\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{69740ED3-90FA-4062-A071-630254A456D2}|CaribeWebServer\\CaribeWebServer.csproj|c:\\users\\alejandro p\u00E1ez\\desktop\\alex\\caribeweb\\server\\caribewebserver\\dtos\\productdto\\createproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{69740ED3-90FA-4062-A071-630254A456D2}|CaribeWebServer\\CaribeWebServer.csproj|solutionrelative:caribewebserver\\dtos\\productdto\\createproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,33 +46,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ProvidersController.cs",
-              "DocumentMoniker": "C:\\Users\\Alejandro P\u00E1ez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\Controllers\\ProvidersController.cs",
-              "RelativeDocumentMoniker": "CaribeWebServer\\Controllers\\ProvidersController.cs",
-              "ToolTip": "C:\\Users\\Alejandro P\u00E1ez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\Controllers\\ProvidersController.cs",
-              "RelativeToolTip": "CaribeWebServer\\Controllers\\ProvidersController.cs",
-              "ViewState": "AQIAABoAAAAAAAAAAAA9wCYAAAB4AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-21T04:37:40.497Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CreateProviderDto.cs",
-              "DocumentMoniker": "C:\\Users\\Alejandro P\u00E1ez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\DTOs\\ProvidersDto\\CreateProviderDto.cs",
-              "RelativeDocumentMoniker": "CaribeWebServer\\DTOs\\ProvidersDto\\CreateProviderDto.cs",
-              "ToolTip": "C:\\Users\\Alejandro P\u00E1ez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\DTOs\\ProvidersDto\\CreateProviderDto.cs",
-              "RelativeToolTip": "CaribeWebServer\\DTOs\\ProvidersDto\\CreateProviderDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-20T20:20:45.559Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "ProductMapper.cs",
+              "DocumentMoniker": "C:\\Users\\Alejandro P\u00E1ez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\Mappers\\ProductMapper.cs",
+              "RelativeDocumentMoniker": "CaribeWebServer\\Mappers\\ProductMapper.cs",
+              "ToolTip": "C:\\Users\\Alejandro P\u00E1ez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\Mappers\\ProductMapper.cs",
+              "RelativeToolTip": "CaribeWebServer\\Mappers\\ProductMapper.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-22T01:30:15.549Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "ProductDTO.cs",
               "DocumentMoniker": "C:\\Users\\Alejandro P\u00E1ez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\DTOs\\ProductDto\\ProductDTO.cs",
               "RelativeDocumentMoniker": "CaribeWebServer\\DTOs\\ProductDto\\ProductDTO.cs",
@@ -64,7 +67,72 @@
               "RelativeToolTip": "CaribeWebServer\\DTOs\\ProductDto\\ProductDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-20T20:17:59.642Z",
+              "WhenOpened": "2024-06-22T01:34:54.396Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IProductsRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Alejandro P\u00E1ez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\Interfaces\\IProductsRepository.cs",
+              "RelativeDocumentMoniker": "CaribeWebServer\\Interfaces\\IProductsRepository.cs",
+              "ToolTip": "C:\\Users\\Alejandro P\u00E1ez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\Interfaces\\IProductsRepository.cs",
+              "RelativeToolTip": "CaribeWebServer\\Interfaces\\IProductsRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAABSAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-22T01:29:04.511Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "C:\\Users\\Alejandro P\u00E1ez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "CaribeWebServer\\Controllers\\ProductsController.cs",
+              "ToolTip": "C:\\Users\\Alejandro P\u00E1ez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "CaribeWebServer\\Controllers\\ProductsController.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAAwwCsAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-22T01:25:35.914Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\Alejandro P\u00E1ez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "CaribeWebServer\\Models\\Product.cs",
+              "ToolTip": "C:\\Users\\Alejandro P\u00E1ez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\Models\\Product.cs",
+              "RelativeToolTip": "CaribeWebServer\\Models\\Product.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAQwAoAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-22T01:15:53.385Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProductsRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Alejandro P\u00E1ez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\Repositories\\ProductsRepository.cs",
+              "RelativeDocumentMoniker": "CaribeWebServer\\Repositories\\ProductsRepository.cs",
+              "ToolTip": "C:\\Users\\Alejandro P\u00E1ez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\Repositories\\ProductsRepository.cs",
+              "RelativeToolTip": "CaribeWebServer\\Repositories\\ProductsRepository.cs",
+              "ViewState": "AQIAACIAAAAAAAAAAAAcwEMAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-22T01:13:21.642Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CreateProductDto.cs",
+              "DocumentMoniker": "C:\\Users\\Alejandro P\u00E1ez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\DTOs\\ProductDto\\CreateProductDto.cs",
+              "RelativeDocumentMoniker": "CaribeWebServer\\DTOs\\ProductDto\\CreateProductDto.cs",
+              "ToolTip": "C:\\Users\\Alejandro P\u00E1ez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\DTOs\\ProductDto\\CreateProductDto.cs",
+              "RelativeToolTip": "CaribeWebServer\\DTOs\\ProductDto\\CreateProductDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-22T01:12:54.206Z",
               "EditorCaption": ""
             }
           ]

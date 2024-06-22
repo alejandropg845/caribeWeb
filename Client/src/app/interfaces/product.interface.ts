@@ -1,8 +1,10 @@
 export interface Product {
     id:number,
+    rating:number,
+    votes:number,
     imageUrl:string,
     description:string,
-    Title:string,
+    title:string,
     price:number,
     category:string
 }

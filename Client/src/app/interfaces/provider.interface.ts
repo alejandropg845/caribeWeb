@@ -1,7 +1,8 @@
-export interface createProvider{
+export interface Provider{
+    id:number,
     name:string,
-    lat:string,
-    lng:string,
+    lat:any,
+    lng:any,
     address:string,
-    phoneNumber:number
+    phone:number
 }

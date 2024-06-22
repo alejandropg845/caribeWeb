@@ -11,6 +11,8 @@ namespace CaribeWebServer.Mappers
             {
                 Id = product.Id,
                 Title = product.Title,
+                Votes = product.Votes,
+                Rating = product.Rating,
                 ImageUrl = product.ImageUrl,
                 Category = product.Category!.Name,
                 Description = product.Description,

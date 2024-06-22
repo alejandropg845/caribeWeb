@@ -18,11 +18,7 @@ namespace CaribeWebServer
         {
 
             base.OnModelCreating(modelBuilder);
-
-            modelBuilder.Entity<Product>().HasMany(p => p.Providers)
-                                          .WithMany(p => p.Products);
             
-
             modelBuilder.Entity<Category>().HasData(
                 new { Id=1, Name = "Sopas" },
                 new { Id=2, Name = "Bebidas artesanales" },

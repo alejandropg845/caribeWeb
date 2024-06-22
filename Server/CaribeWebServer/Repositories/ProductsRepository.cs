@@ -56,5 +56,15 @@ namespace CaribeWebServer.Repositories
             await _context.SaveChangesAsync();
             return product;
         }
+
+        public async Task<Product> RateProductAsync([FromRoute]int id, [FromBody] int rating)
+        {
+            var product = await _context.Products.Include(p => p.Category).FirstOrDefaultAsync(p => p.Id==id);
+            if (product == null) return null!;
+            product.Rating += rating;
+            product.Votes++;
+            await _context.SaveChangesAsync();
+            return product;
+        }
     }
 }

@@ -38,6 +38,14 @@ namespace CaribeWebServer.Controllers
             return Ok(new {Message="Agregado correctamente", Id = newProduct.Id });
         }
 
+        [HttpPost("rateProduct/{id:int}")]
+        public async Task<ActionResult> RateProduct([FromRoute]int id, [FromBody]int rating)
+        {
+            var product = await _productsRepo.RateProductAsync(id, rating);
+            if (product == null) return NotFound(new { Message = "Producto no fue encontrado" });
+            return Ok(new { Message="Rating agregado" , Product = product.ToProductDto()});
+        }
+
         [HttpPut("{id:int}")]
         public async Task<ActionResult<ProductDTO>> UpdateProductAsync([FromRoute]int id ,[FromBody] UpdateProductDto dto)
         {
