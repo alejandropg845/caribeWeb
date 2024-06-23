@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap, tap } from 'rxjs';
 import { Product } from '../../interfaces/product.interface';
 import { ToastrService } from 'ngx-toastr';
@@ -53,6 +53,17 @@ export class ProductComponent implements OnInit{
 
   }
 
+  hoverRating(rating:number){
+    if(!this.rated){
+      this.rating = rating;
+    }
+    
+  }
+
+  hoverOut(rating:number){
+    this.rating = rating;
+  }
+
   loadProductInfo(){
 
     this.activatedRoute.params
@@ -91,6 +102,42 @@ export class ProductComponent implements OnInit{
     }
   }
 
+  productsLocalStorage:Product[] = JSON.parse(localStorage.getItem('savedProducts')!) || [];
+
+
+  addToSaved(productId:number){
+    const productInLS = this.productsLocalStorage.some(product => product.id === productId);
+    if(productInLS) {
+      this.toastr.info("Este producto ya se encuentra en tus guardados", "Producto existente");
+      return;
+    }
+
+    this.productsService.loadProductById(productId)
+    .subscribe({
+      next: product => {
+        this.productsLocalStorage.push(product);
+        localStorage.setItem('savedProducts', JSON.stringify(this.productsLocalStorage));
+        this.toastr.success("Producto agregado a guardados", "Agregado");
+      },
+      error: _ => {
+        this.toastr.error("Ocurrió un error al agregar el producto", "Error");
+      }
+    });
+  }
+
+  deleteProductFromDB(productId:number){
+    this.productsService.deleteProduct(productId)
+    .subscribe({
+      next: (res:any) => {
+        this.toastr.success(res.message,"Eliminado");
+        this.router.navigateByUrl("/caribeWeb/home");
+      },
+      error: (err:any) => {
+        this.toastr.error(err.error.message, "Error");
+      }
+    })
+  }
+
   locationToFloat(providers:Provider[]){
 
     const provs:Provider[] = [];
@@ -98,12 +145,13 @@ export class ProductComponent implements OnInit{
     for (let i = 0; i < providers.length; i++) {
 
       let provider:Provider = {
-        id      : providers[i].id,
-        name    : providers[i].name,
-        address : providers[i].address,
-        lat     : parseFloat(providers[i].lat),
-        lng     : parseFloat(providers[i].lng),
-        phone   : providers[i].phone
+        productId: providers[i].productId,
+        id       : providers[i].id,
+        name     : providers[i].name,
+        address  : providers[i].address,
+        lat      : parseFloat(providers[i].lat),
+        lng      : parseFloat(providers[i].lng),
+        phone    : providers[i].phone
       }
 
       provs.push(provider);
@@ -115,7 +163,8 @@ export class ProductComponent implements OnInit{
   constructor(private productsService:ProductsService, 
               private activatedRoute:ActivatedRoute,
               private toastr:ToastrService,
-              public sanitizer:DomSanitizer){}
+              public sanitizer:DomSanitizer,
+              private router:Router){}
   
   ngOnInit(): void {
       this.loadProductInfo();

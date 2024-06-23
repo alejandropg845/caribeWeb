@@ -3,6 +3,7 @@ export interface Provider{
     name:string,
     lat:any,
     lng:any,
+    productId:number,
     address:string,
     phone:number
 }

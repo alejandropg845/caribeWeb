@@ -18,13 +18,10 @@ export class ProductsService{
     private urlProviders = environment.api+"provider/";
 
 
-    productsSubject = new BehaviorSubject<Product[]>([]);
-    productsObservable = this.productsSubject.asObservable();
-    loadProducts(){
-        this.http.get<Product[]>(this.urlProducts)
-        .subscribe(products => {
-            this.productsSubject.next(products);
-        });
+    
+
+    loadProducts():Observable<Product[]>{
+        return this.http.get<Product[]>(this.urlProducts);
     }
 
     loadProductById(productId:number):Observable<Product>{
@@ -51,13 +48,51 @@ export class ProductsService{
         return forkJoin(providerRequestsObservables);
     }
 
+    editProduct(productId:number,form:FormGroup):Observable<Product>{
+        return this.http.put<Product>(this.urlProducts+'/'+productId,form.value);
+    }
+
+    deleteProduct(productId:number){
+        return this.http.delete(this.urlProducts+"/"+productId);
+    }
 
     
     rateProduct(productId:number,rating:number){
         return this.http.post<RateResponse>(this.urlProducts+"/rateProduct/"+productId,rating);
     }
 
+    deleteProvider(providerId:number){
+        return this.http.delete(this.urlProviders+providerId);
+    }
 
+
+    sortedProductsSubject = new BehaviorSubject<Product[]>([]);
+    sortedProductsObservable = this.sortedProductsSubject.asObservable();
+
+    sortProducts(sort:number){
+
+        this.loadProducts().subscribe(products => {
+            
+            switch (sort) {
+                case 1:
+                  this.sortedProductsSubject.next(products.filter(prods => prods.category === "Bebidas artesanales"));
+                  break;
+                case 2:
+                  this.sortedProductsSubject.next(products.filter(prods => prods.category === "Productos artesanales"));
+                  break;
+                case 3:
+                  this.sortedProductsSubject.next(products.filter(prods => prods.category === "Sopas"));
+                  break;
+                case 4:
+                  this.sortedProductsSubject.next(products.filter(prods => prods.category === "Ropa o vestimenta"));
+                  break;
+                default:
+                    this.sortedProductsSubject.next(products.filter(prods => prods.category === "Bebidas artesanales"));
+                  break;
+            }
+        });
+        
+    }
 
     constructor(private http:HttpClient, private toastr:ToastrService){}
 

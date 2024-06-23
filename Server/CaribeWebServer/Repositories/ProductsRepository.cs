@@ -50,8 +50,17 @@ namespace CaribeWebServer.Repositories
 
         public async Task<Product> DeleteProductByIdAsync([FromRoute] int id)
         {
+
             var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
             if (product == null) return null!;
+
+            var providers = await _context.Providers
+                        .Where(p => p.ProductId == id).ToListAsync();
+            
+
+            foreach (var provider in providers)
+                _context.Providers.Remove(provider);
+            
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
             return product;

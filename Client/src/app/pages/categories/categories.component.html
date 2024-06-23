@@ -1,14 +1,46 @@
+<h1 class="text-center font-medium text-4xl my-4  mt-32">Filtrar por categoría</h1>
 
-<div class="flex flex-col justify-center w-[95%] mx-auto mb-5 mt-32">
-    <h1 class="text-center font-medium text-4xl my-4">Filtrar por categoría</h1>
-    <div class="flex justify-center">
-        <select class="px-2 py-1 text-lg font-medium border-2 rounded-xl 520:w-52 border-black">
-            <option class="px-2 py-1 font-medium" value="1">Bebidas artesanales</option>
-            <option class="px-2 py-1 font-medium" value="2">Productos artesanales</option>
-            <option class="px-2 py-1 font-medium" value="3">Sopas</option>
-            <option class="px-2 py-1 font-medium" value="4">Ropa o vestimenta</option>
-        </select>
+<div class="flex flex-col w-full mx-auto  absolute">
+    <div class="group flex flex-col items-center justify-center">
+        <p class="px-2 border-2 border-black font-semibold rounded-xl">{{term}}</p>
+        <div class="hidden group-hover:flex flex-col justify-center items-center">
+            <button class="text-sm hover:bg-gray-200 hover:font-medium transition ease-in-out duration-300 px-2 py-1 w-44 border-b-2 border-black" (click)="sortBy('Bebidas artesanales', 1)">Bebidas artesanales</button>
+            <button class="text-sm hover:bg-gray-200 hover:font-medium transition ease-in-out duration-300 px-2 py-1 w-44 border-b-2 border-black" (click)="sortBy('Productos artesanales', 2)">Productos artesanales</button>
+            <button class="text-sm hover:bg-gray-200 hover:font-medium transition ease-in-out duration-300 px-2 py-1 w-44 border-b-2 border-black" (click)="sortBy('Sopas', 3)">Sopas</button>
+            <button class="text-sm hover:bg-gray-200 hover:font-medium transition ease-in-out duration-300 px-2 py-1 w-44 border-b-2 border-black" (click)="sortBy('Ropa o vestimenta', 4)">Ropa o vestimenta</button>
+        </div>
     </div>
 </div>
 
-<app-home></app-home>
+
+<main class="w-[95%] mx-auto flex flex-col items-center md:grid md:grid-cols-2 md:gap-4 md:w-[90%] mt-48">
+
+    @for (product of products; track product) {
+
+    <div class="flex mb-4"> <!--Product container-->
+        <div class="relative">
+            <img class="w-36 h-32 object-cover rounded-lg 520:w-56 520:h-44 lg:w-80 lg:h-56" [src]="product.imageUrl" alt="product image">
+            <div class="absolute bottom-0 left-0">
+                <i class="fa-solid fa-star text-gray-300 text-lg mr-2" [class.text-yellow-600]="calculateStarAverage(product) >=1"></i>
+                <i class="fa-solid fa-star text-gray-300 text-lg mr-2" [class.text-yellow-600]="calculateStarAverage(product) >=2"></i>
+                <i class="fa-solid fa-star text-gray-300 text-lg mr-2" [class.text-yellow-600]="calculateStarAverage(product) >=3"></i>
+                <i class="fa-solid fa-star text-gray-300 text-lg mr-2" [class.text-yellow-600]="calculateStarAverage(product) >=4"></i>
+                <i class="fa-solid fa-star text-gray-300 text-lg" [class.text-yellow-600]="calculateStarAverage(product) >=5"></i>
+            </div>
+        </div>
+        <div class="flex flex-col">
+            <div>
+                <p class="text-sm line-clamp-3 font-medium mx-2 w-40 border-b-2 border-b-yellow-400 520:text-base 520:w-52 md:w-40 lg:text-xl lg:line-clamp-3 lg:w-64">{{product.title}}</p>
+                <p class="text-green-800 font-bold ml-2 text-xl 520:text-2xl md:text-xl lg:text-2xl">COP {{product.price}}$</p>
+            </div>
+            <div class="flex justify-evenly items-center mt-2">
+                <a class="px-3 py-1 border-2 border-black rounded-lg font-bold hover:bg-gray-200 transition ease-in-out duration-300 lg:text-xl" [routerLink]="['/caribeWeb/product',product.id]"><i class="fa-solid fa-eye mr-1"></i>Ver</a>
+                <button class="bg-yellow-200 px-2 py-1 border-2 border-black rounded-lg font-bold hover:bg-yellow-300 transition ease-in-out duration-300 lg:text-xl"><i class="fa-solid fa-heart mr-1"></i>Añadir</button>
+            </div>
+        </div>
+    </div>
+
+    }
+
+</main>
+

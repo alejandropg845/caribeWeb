@@ -59,7 +59,7 @@ namespace CaribeWebServer.Controllers
         {
             var product = await _productsRepo.DeleteProductByIdAsync(id);
             if (product == null) return NotFound(new { Message = "Producto no encontrado" });
-            return Ok(new { Message = "Producto eiminado correctamente" });
+            return Ok(new { Message = "Producto eliminado correctamente" });
         }
  
     }

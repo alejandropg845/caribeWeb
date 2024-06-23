@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CaribeWebServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+07c6d50ea2271bbec394bfff05b0fae7c75fa542")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d64c77b9040c595696b0537d7b239b22249d96d4")]
 [assembly: System.Reflection.AssemblyProductAttribute("CaribeWebServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CaribeWebServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

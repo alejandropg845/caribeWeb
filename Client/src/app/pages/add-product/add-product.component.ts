@@ -22,8 +22,11 @@ export class AddProductComponent{
     categoryId:["",Validators.required]
   });
 
-  onSubmit(){
 
+  isSubmit:boolean = false;
+
+  onSubmit(){
+    
     if(!this.form.valid){ 
       this.toastr.error("No has llenado todos los campos", "Campos vacíos"); 
       this.form.markAllAsTouched();
@@ -39,6 +42,7 @@ export class AddProductComponent{
       this.toastr.error("Has agregado más de una imagen. Debes agregar sólo una.", "Error"); 
       return;
     }
+    this.isSubmit = true;
 
     //Create an observables of Cloudinary Images Urls
     const urlObservable = this.files.map(file => {
@@ -62,6 +66,7 @@ export class AddProductComponent{
         this.productsService.uploadProductToDB(this.form.value)
         .subscribe({
           next: (res:any) => {
+          this.isSubmit = false;
           this.toastr.success(res.message, "Listo");
           this.router.navigateByUrl("/caribeWeb/add_provider/"+res.id);
           localStorage.setItem('boolean', "true");

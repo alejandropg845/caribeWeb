@@ -3,14 +3,18 @@
     <div *ngIf="product">
         <img class="rounded-md" [src]="product.imageUrl" alt="product image">
     </div>
+
     <div class="flex items-center mb-5">
-        <button [disabled]="rated" (click)="setRating(1)"><i  [class.text-yellow-500]="rating >=1" class="fa-solid fa-star text-gray-200 text-2xl md:text-4xl mt-2 520:text-3xl cursor-pointer transition ease-in-out duration-100"></i></button>
-        <button [disabled]="rated" (click)="setRating(2)"><i  [class.text-yellow-500]="rating >=2" class="fa-solid fa-star text-gray-200 text-2xl md:text-4xl mt-2 520:text-3xl cursor-pointer transition ease-in-out duration-100"></i></button>
-        <button [disabled]="rated" (click)="setRating(3)"><i  [class.text-yellow-500]="rating >=3" class="fa-solid fa-star text-gray-200 text-2xl md:text-4xl mt-2 520:text-3xl cursor-pointer transition ease-in-out duration-100"></i></button>
-        <button [disabled]="rated" (click)="setRating(4)"><i  [class.text-yellow-500]="rating >=4" class="fa-solid fa-star text-gray-200 text-2xl md:text-4xl mt-2 520:text-3xl cursor-pointer transition ease-in-out duration-100"></i></button>
-        <button [disabled]="rated" (click)="setRating(5)"><i  [class.text-yellow-500]="rating >=5" class="fa-solid fa-star text-gray-200 text-2xl md:text-4xl mt-2 520:text-3xl cursor-pointer transition ease-in-out duration-100"></i></button>
-        <p class="ml-4 520:text-lg font-medium">{{product.votes}} personas han votado este producto</p>
+        <button [disabled]="rated" (mouseout)="hoverRating(0)" (mouseover)="hoverRating(1)" (click)="setRating(1)"><i [class.text-yellow-500]="rating >=1" class="fa-solid fa-star transition ease-in-out duration-300 text-gray-200 text-2xl md:text-4xl mt-2 520:text-3xl cursor-pointer"></i></button>
+        <button [disabled]="rated" (mouseout)="hoverRating(0)" (mouseover)="hoverRating(2)" (click)="setRating(2)"><i [class.text-yellow-500]="rating >=2" class="fa-solid fa-star transition ease-in-out duration-300 text-gray-200 text-2xl md:text-4xl mt-2 520:text-3xl cursor-pointer"></i></button>
+        <button [disabled]="rated" (mouseout)="hoverRating(0)" (mouseover)="hoverRating(3)" (click)="setRating(3)"><i [class.text-yellow-500]="rating >=3" class="fa-solid fa-star transition ease-in-out duration-300 text-gray-200 text-2xl md:text-4xl mt-2 520:text-3xl cursor-pointer"></i></button>
+        <button [disabled]="rated" (mouseout)="hoverRating(0)" (mouseover)="hoverRating(4)" (click)="setRating(4)"><i [class.text-yellow-500]="rating >=4" class="fa-solid fa-star transition ease-in-out duration-300 text-gray-200 text-2xl md:text-4xl mt-2 520:text-3xl cursor-pointer"></i></button>
+        <button [disabled]="rated" (mouseout)="hoverRating(0)" (mouseover)="hoverRating(5)" (click)="setRating(5)"><i [class.text-yellow-500]="rating >=5" class="fa-solid fa-star transition ease-in-out duration-300 text-gray-200 text-2xl md:text-4xl mt-2 520:text-3xl cursor-pointer"></i></button>
+        <p *ngIf="product && product.votes!==0 && product.votes!==1" class="ml-4 520:text-lg font-medium">{{product.votes}} personas han votado este producto</p>
+        <p *ngIf="product && product.votes===0" class="ml-4 520:text-lg font-medium">Nadie ha votado este producto aún</p>
+        <p *ngIf="product && product.votes===1" class="ml-4 520:text-lg font-medium">{{product.votes}} persona ha votado este producto</p>
     </div>
+    
     <div *ngIf="product" class="flex flex-col justify-center items-start">
 
         
@@ -22,9 +26,11 @@
         
         
 
-        <div class="flex justify-center items-center gap-2 w-[90%] mx-auto mt-4 520:justify-evenly">
+        <div class="flex flex-wrap justify-center items-center gap-2 w-[90%] mx-auto mt-4 520:justify-evenly">
             <p class="text-lg font-medium bg-yellow-300 rounded-lg px-1 520:text-2xl md:text-4xl">COP {{product.price}}$</p>
-            <button class="border-2 border-black px-2 py-1 rounded-lg font-bold 520:text-2xl md:text-3xl">Añadir a guardados</button>
+            <button (click)="addToSaved(product.id)" class="border-2 border-black px-2 py-1 rounded-lg font-bold 520:text-2xl md:text-xl"><i class="fa-solid fa-floppy-disk mr-2"></i>Añadir a guardados</button>
+            <button (click)="deleteProductFromDB(product.id)" class="border-2 border-red-500 text-red-500 px-2 py-1 rounded-lg font-bold 520:text-2xl md:text-xl"><i class="fa-solid fa-trash mr-2"></i>Eliminar</button>
+            <button [routerLink]="['/caribeWeb/edit_product',product.id]" class="border-2 border-gray-600 text-gray-600 px-2 py-1 rounded-lg font-bold 520:text-2xl md:text-xl"><i class="fa-regular fa-pen-to-square mr-2"></i>Editar</button>
         </div>
          
     </div>
@@ -37,7 +43,7 @@
         <h2 class="text-center font-semibold text-4xl my-10">¿Dónde puedes encontrarlo?</h2>
     </div>  
     
-    <div *ngIf="providers" class="w-[99%] mx-auto 520:w-max md:w-max lg:w-[95%] lg:grid lg:grid-cols-2 lg:gap-5">
+    <div *ngIf="providers" class="w-[99%] mx-auto 520:w-max md:w-max lg:w-[95%] min-[1200px]:grid min-[1200px]:grid-cols-2 min-[1200px]:gap-5">
 
         @for (provider of providers; track provider) {
         <div class="flex flex-col md:w-full 520:mx-auto items-center rounded-lg bg-gray-200 p-2 mx-2 md:flex-row mb-5"> <!--Provider container-->

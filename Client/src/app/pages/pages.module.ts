@@ -14,6 +14,8 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddProvidersComponent } from './add-providers/add-providers.component';
+import { EditProvidersComponent } from './edit-providers/edit-providers.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 
 
@@ -26,7 +28,9 @@ import { AddProvidersComponent } from './add-providers/add-providers.component';
                 HeaderComponent,
                 FooterComponent,
                 CategoriesComponent,
-                AddProvidersComponent],
+                AddProvidersComponent,
+                EditProvidersComponent,
+                EditProductComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

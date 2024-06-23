@@ -1,22 +1,31 @@
-import { AfterViewInit, Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import 'leaflet-control-geocoder';
-import { switchMap } from 'rxjs';
+import { switchMap, tap } from 'rxjs';
+import { createProvider } from '../../interfaces/createProvider.interface';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 import { ToastrService } from 'ngx-toastr';
-import { createProvider } from '../../interfaces/createProvider.interface';
+import { Provider } from '../../interfaces/provider.interface';
+
+export interface ProviderResponse{
+  message:string,
+  provider:Provider
+}
+
+
 @Component({
-  selector: 'app-add-providers',
-  templateUrl: './add-providers.component.html',
+  selector: 'app-edit-providers',
+  templateUrl: './edit-providers.component.html',
   styles: ``
 })
-export class AddProvidersComponent implements AfterViewInit{
+export class EditProvidersComponent implements AfterViewInit, OnInit{
 
   private map!: L.Map;
   marker: L.Marker | null = null;
   markerPosition = { lat: 0, lng: 0 };
+  providersDB:Provider[] = [];
   ProviderForm:FormGroup = this.fb.group({
     name:[null,Validators.required],
     position:[["",""]],
@@ -24,22 +33,50 @@ export class AddProvidersComponent implements AfterViewInit{
     phone:[null,[Validators.required, Validators.minLength(10), Validators.maxLength(10)]]
   });
 
-  onSubmit(){
 
+  onSubmit(){
+    
     this.activatedRoute.params
     .pipe(switchMap(({id}) => this.productsService.addProductProviders(id,this.providersLocalStorage)))
     .subscribe({
       next: (res:any) => {
-        this.toastr.success("Producto y proveedores agregados correctamente","Listo");
+        this.toastr.success(res.message,"Listo");
         localStorage.removeItem('providers');
         localStorage.removeItem('boolean');
-        this.router.navigateByUrl("/caribeWeb/home");
+        this.router.navigateByUrl("/caribeWeb/product/"+this.productId);
       },
       error: (res:any) => {
         this.toastr.error(res.error.message || "Error al agregar información", "Error");
       }
     });
   }
+
+  productId:number = 0;
+  loadProvidersFromDB(){
+    this.activatedRoute.params.pipe(
+      switchMap(({id}) => this.productsService.loadProductProviders(id)),
+      tap((provider:Provider[]) => {
+        this.productId = provider[0].productId;
+      })
+    ).subscribe(providers => {
+      this.providersDB = providers;
+      console.log(this.providersDB);
+    });
+  }
+
+  deleteProviderFromDB(providerId:number){
+    this.productsService.deleteProvider(providerId)
+    .subscribe({
+      next: (res:any) => {
+        this.toastr.success(res.message);
+        this.loadProvidersFromDB();
+      },
+      error: (err:any) => {
+        this.toastr.error(err.message);
+      }
+    })
+  }
+
 
   providersLocalStorage:createProvider[] = JSON.parse(localStorage.getItem('providers')!)
 
@@ -143,17 +180,24 @@ export class AddProvidersComponent implements AfterViewInit{
   }
 
   constructor(private fb:FormBuilder, 
-              private activatedRoute:ActivatedRoute, 
-              private productsService:ProductsService,
-              private toastr:ToastrService,
-              private router:Router){}
+  private activatedRoute:ActivatedRoute, 
+  private productsService:ProductsService,
+  private toastr:ToastrService,
+  private router:Router){}
+  
+
+  ngOnInit(): void {
+    this.loadProvidersFromDB();
+  }
 
   ngAfterViewInit(): void {
-      this.initMap();
-      const isTrue = localStorage.getItem('boolean');
-      if(isTrue!=="true"){
-        this.toastr.error("Acceso denegado!");
-        this.router.navigateByUrl("/caribeWeb/home");
-      }
+    this.initMap();
+    const isTrue = localStorage.getItem('boolean');
+    if(isTrue!=="true"){
+      this.toastr.error("Acceso denegado!");
+      this.router.navigateByUrl("/caribeWeb/home");
+    };
+    
   }
+
 }

@@ -7,6 +7,8 @@ import { SavedComponent } from "./saved/saved.component";
 import { MainComponent } from "./main/main.component";
 import { CategoriesComponent } from "./categories/categories.component";
 import { AddProvidersComponent } from "./add-providers/add-providers.component";
+import { EditProductComponent } from "./edit-product/edit-product.component";
+import { EditProvidersComponent } from "./edit-providers/edit-providers.component";
 
 export const routes: Routes = [
     {
@@ -21,6 +23,14 @@ export const routes: Routes = [
             {
                 path:'add_provider/:id',
                 component: AddProvidersComponent
+            },
+            {
+                path: 'edit_product/:id',
+                component: EditProductComponent
+            },
+            {
+                path: 'edit_providers/:id',
+                component: EditProvidersComponent
             },
             {
                 path: 'product/:id',
