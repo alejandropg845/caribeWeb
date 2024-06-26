@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Alejandro P\u00E1ez\\Desktop\\Alex\\CaribeWeb\\Server\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{69740ED3-90FA-4062-A071-630254A456D2}|CaribeWebServer\\CaribeWebServer.csproj|c:\\users\\alejandro p\u00E1ez\\desktop\\alex\\caribeweb\\server\\caribewebserver\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{69740ED3-90FA-4062-A071-630254A456D2}|CaribeWebServer\\CaribeWebServer.csproj|solutionrelative:caribewebserver\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{69740ED3-90FA-4062-A071-630254A456D2}|CaribeWebServer\\CaribeWebServer.csproj|c:\\users\\alejandro p\u00E1ez\\desktop\\alex\\caribeweb\\server\\caribewebserver\\controllers\\providerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{69740ED3-90FA-4062-A071-630254A456D2}|CaribeWebServer\\CaribeWebServer.csproj|solutionrelative:caribewebserver\\controllers\\providerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -27,19 +31,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Alejandro P\u00E1ez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "CaribeWebServer\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\Alejandro P\u00E1ez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\ApplicationDbContext.cs",
+              "RelativeToolTip": "CaribeWebServer\\ApplicationDbContext.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAgwBsAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-25T13:50:44.432Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "ProvidersController.cs",
               "DocumentMoniker": "C:\\Users\\Alejandro P\u00E1ez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\Controllers\\ProvidersController.cs",
               "RelativeDocumentMoniker": "CaribeWebServer\\Controllers\\ProvidersController.cs",
               "ToolTip": "C:\\Users\\Alejandro P\u00E1ez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\Controllers\\ProvidersController.cs",
               "RelativeToolTip": "CaribeWebServer\\Controllers\\ProvidersController.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAowCYAAABSAAAA",
+              "ViewState": "AQIAABUAAAAAAAAAAAAowB8AAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-23T03:56:44.849Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ProductsRepository.cs",
               "DocumentMoniker": "C:\\Users\\Alejandro P\u00E1ez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\Repositories\\ProductsRepository.cs",
               "RelativeDocumentMoniker": "CaribeWebServer\\Repositories\\ProductsRepository.cs",

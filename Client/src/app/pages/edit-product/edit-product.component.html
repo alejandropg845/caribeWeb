@@ -3,7 +3,11 @@
     <form (submit)="onSubmit()" [formGroup]="form" class="flex flex-col justify-center">
 
         <div>
-            <input [class]="validateField('title')" formControlName="title" type="text" class="px-2 py-1 bg-gray-200 border-black border-2 rounded-lg mb-2" placeholder="Título del producto">
+
+            <div class="flex flex-wrap items-center">
+                <input [class]="validateField('title')" formControlName="title" type="text" class="px-2 py-1 bg-gray-200 border-black border-2 rounded-lg mb-2" placeholder="Título del producto">
+                <p *ngIf="showInfo('title')" class="ml-2 text-xs text-red-500 font-semibold">Has excedido el límite de caracteres (100)</p>
+            </div>
             
             <ngx-dropzone class="flex justify-center" (change)="onSelect($event)">
                 <ngx-dropzone-label>Agrega una imagen</ngx-dropzone-label>
@@ -12,10 +16,13 @@
                 </ngx-dropzone-image-preview>
             </ngx-dropzone>
             <textarea [class]="validateField('description')"  formControlName="description" class="px-2 520:mt-5 py-1 520:py-0 520:my-0 bg-gray-200 border-black border-2 w-full rounded-lg my-4 h-24 resize-none" type="number" placeholder="Descripción del producto"></textarea>
-
+            <p *ngIf="showInfo('description')" class="px-1 text-xs text-red-500 font-semibold">Has excedido el límite de caracteres (3000)</p>
             <div class="flex flex-col 520:flex-row 520:gap-2 520:mt-4 justify-center">
 
-                <input [class]="validateField('price')"  formControlName="price" class="px-2 py-1 520:py-0 520:my-0 bg-gray-200 border-black border-2 rounded-lg my-4" type="number" placeholder="Precio del producto">
+                <div class="flex flex-col">
+                    <input [class]="validateField('price')"  formControlName="price" class="px-2 py-1 520:py-0 520:my-0 bg-gray-200 border-black border-2 rounded-lg my-4" type="number" placeholder="Precio del producto">
+                    <p *ngIf="showInfo('price')" class="px-1 text-xs text-red-500 font-semibold">El precio debe ser menor a COP 1.000.000$</p>
+                </div>
                 <select [class]="validateField('category')" formControlName="categoryId" class="px-2 py-1 text-lg font-medium border-2 520:text-base border-black">
                     <option value="">Selecciona una categoría</option>
                     <option class="px-2 py-1 font-medium" value="1">Sopas</option>

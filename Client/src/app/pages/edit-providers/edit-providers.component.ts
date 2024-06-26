@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, viewChild } from '@angular/core';
 import * as L from 'leaflet';
 import 'leaflet-control-geocoder';
 import { switchMap, tap } from 'rxjs';
@@ -27,17 +27,34 @@ export class EditProvidersComponent implements AfterViewInit, OnInit{
   markerPosition = { lat: 0, lng: 0 };
   providersDB:Provider[] = [];
   ProviderForm:FormGroup = this.fb.group({
-    name:[null,Validators.required],
+    name:[null,[Validators.required, Validators.maxLength(60)]],
     position:[["",""]],
-    address:[null,Validators.required],
+    address:[null,[Validators.required, Validators.maxLength(70)]],
     phone:[null,[Validators.required, Validators.minLength(10), Validators.maxLength(10)]]
   });
 
+  validatePhone(){
+    const formPhone:string = this.ProviderForm.get('phone')?.value;
+    let isValid:boolean = true;
+    for (let i = 0; i < formPhone.length; i++) {
+      const character = formPhone[i];
+      const characterToNumber = parseInt(character);
+      if(isNaN(characterToNumber)) {
+        isValid = false
+        break;
+      }
+    }
+
+    if(isValid) this.ProviderForm.get('phone')?.setErrors(null);
+    else this.ProviderForm.get('phone')?.setErrors({'invalidPhone': true});
+  
+  }
 
   onSubmit(){
-    
     this.activatedRoute.params
-    .pipe(switchMap(({id}) => this.productsService.addProductProviders(id,this.providersLocalStorage)))
+    .pipe(
+      switchMap(({id}) => this.productsService.addProductProviders(id,this.providersLocalStorage))
+    )
     .subscribe({
       next: (res:any) => {
         this.toastr.success(res.message,"Listo");
@@ -50,6 +67,18 @@ export class EditProvidersComponent implements AfterViewInit, OnInit{
       }
     });
   }
+
+  showInfo(field:string){
+    const formField = this.ProviderForm.get(field);
+    let asdas;
+    if(field==="name" || field==="address"){
+      asdas = (formField?.hasError('maxlength') && formField!.touched) ? true : false;
+    }else if(field==="phone"){
+      asdas = (formField?.hasError('invalidPhone')) ? true : false;
+    }
+    return asdas;
+  }
+
 
   productId:number = 0;
   loadProvidersFromDB(){
@@ -81,6 +110,7 @@ export class EditProvidersComponent implements AfterViewInit, OnInit{
   providersLocalStorage:createProvider[] = JSON.parse(localStorage.getItem('providers')!)
 
   saveProvider(){
+    this.validatePhone();
     if(!this.ProviderForm.valid){
       this.toastr.error("Campos faltantes o con errores", "Error"); 
       this.ProviderForm.markAllAsTouched();

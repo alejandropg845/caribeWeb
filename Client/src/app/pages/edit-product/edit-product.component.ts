@@ -16,10 +16,10 @@ export class EditProductComponent implements OnInit{
   files: File[] = [];
   productId!:number;
   form:FormGroup = this.fb.group({
-    title:[null,Validators.required],
+    title:[null,[Validators.required, Validators.maxLength(100)]],
     imageUrl:[""],
-    description:[null,Validators.required],
-    price:[null,[Validators.required, Validators.min(1)]],
+    description:[null,[Validators.required,Validators.maxLength(3000)]],
+    price:[null,[Validators.required, Validators.min(1), Validators.max(1000000)]],
     categoryId:["",Validators.required]
   });
 
@@ -121,6 +121,17 @@ export class EditProductComponent implements OnInit{
 
     }});
 
+  }
+
+  showInfo(field:string){
+    const formField = this.form.get(field);
+    let asdas;
+    if(field==="description" || field==="title"){
+      asdas = (formField?.hasError('maxlength') && formField!.touched) ? true : false;
+    }else if(field==="price"){
+      asdas = (formField?.hasError('max') && formField!.touched) ? true : false;
+    }
+    return asdas;
   }
 
   goToProvidersInstead(){

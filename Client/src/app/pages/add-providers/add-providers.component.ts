@@ -18,9 +18,9 @@ export class AddProvidersComponent implements AfterViewInit{
   marker: L.Marker | null = null;
   markerPosition = { lat: 0, lng: 0 };
   ProviderForm:FormGroup = this.fb.group({
-    name:[null,Validators.required],
+    name:[null,[Validators.required, Validators.maxLength(60)]],
     position:[["",""]],
-    address:[null,Validators.required],
+    address:[null,[Validators.required, Validators.maxLength(70)]],
     phone:[null,[Validators.required, Validators.minLength(10), Validators.maxLength(10)]]
   });
 
@@ -43,7 +43,35 @@ export class AddProvidersComponent implements AfterViewInit{
 
   providersLocalStorage:createProvider[] = JSON.parse(localStorage.getItem('providers')!)
 
+  validatePhone(){
+    const formPhone:string = this.ProviderForm.get('phone')?.value;
+    let isValid:boolean = true;
+    for (let i = 0; i < formPhone.length; i++) {
+      const character = formPhone[i];
+      const characterToNumber = parseInt(character);
+      if(isNaN(characterToNumber)) {
+        isValid = false
+        break;
+      }
+    }
+
+    if(isValid) this.ProviderForm.get('phone')?.setErrors(null);
+    else this.ProviderForm.get('phone')?.setErrors({'invalidPhone': true});
+  
+  }
+
+  showInfo(field:string){
+    const formField = this.ProviderForm.get(field);
+    if(field==="name" || field==="address"){
+      return (formField?.hasError('maxlength') && formField!.touched) ? true : false;
+    }else if(field==="phone"){
+      return (formField?.hasError('invalidPhone')) ? true : false;
+    }
+    return;
+  }
+
   saveProvider(){
+    this.validatePhone();
     if(!this.ProviderForm.valid){
       this.toastr.error("Campos faltantes o con errores", "Error"); 
       this.ProviderForm.markAllAsTouched();

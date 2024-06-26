@@ -20,8 +20,8 @@
         
         
         <div>
-            <p class="text-base my-2 font-bold 520:text-xl md:text-3xl lg:text-4xl">{{product.title}}</p>
-            <p class="text-sm 520:text-base lg:text-xl">{{product.description}}</p>
+            <p class="break-normal text-base my-2 font-bold 520:text-xl md:text-3xl lg:text-4xl">{{product.title}}</p>
+            <p class="break-normal text-sm 520:text-base lg:text-xl">{{product.description}}</p>
         </div>
         
         
@@ -43,7 +43,7 @@
         <h2 class="text-center font-semibold text-4xl my-10">¿Dónde puedes encontrarlo?</h2>
     </div>  
     
-    <div *ngIf="providers" class="w-[99%] mx-auto 520:w-max md:w-max lg:w-[95%] min-[1200px]:grid min-[1200px]:grid-cols-2 min-[1200px]:gap-5">
+    <div *ngIf="providers" class="w-[99%] mx-auto 520:w-[450px] md:w-[650px] min-[1024px]:w-[650px] min-[1200px]:w-[98%] min-[1200px]:grid min-[1200px]:grid-cols-2 min-[1200px]:gap-5">
 
         @for (provider of providers; track provider) {
         <div class="flex flex-col md:w-full 520:mx-auto items-center rounded-lg bg-gray-200 p-2 mx-2 md:flex-row mb-5"> <!--Provider container-->
@@ -51,10 +51,10 @@
                 <div class="w-full"><iframe class="w-full h-[300px] md:w-[400px] md:h-[300px]" frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" [src]="this.sanitizer.bypassSecurityTrustResourceUrl('https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=es&amp;q='+provider.lat+','+provider.lng+'+((notitle))&amp;t=&amp;z=21&amp;ie=UTF8&amp;iwloc=B&amp;output=embed')"><a href="https://www.gps.ie/car-satnav-gps/">GPS devices</a></iframe></div>
             </div>
             <div class="w-[95%] 520:w-[70%] mx-auto flex flex-col">
-                <p class="text-base font-bold my-2 text-center md:text-left md:ml-5 md:text-xl lg:text-2xl">{{provider.name}}</p>
+                <p class="break-normal text-base font-bold my-2 text-center md:text-left md:ml-5 md:text-xl lg:text-2xl">{{provider.name}}</p>
                 <div class="flex gap-3 justify-evenly md:w-[60%] md:flex-col md:items-start md:ml-5 md:mb-14 lg:mb-0 lg:w-[40%]">
-                    <p class="bg-gray-400 md:w-40 break-words px-2 rounded-lg w-max flex justify-center items-center mb-1 text-xs font-bold border border-gray-950 520:text-base lg:text-sm"><i class="fa-solid fa-phone mr-1 520:mr-3 md:mr-5"></i>{{provider.phone}}</p>
-                    <p class="bg-yellow-300 border  border-gray-950 px-2 rounded-lg w-max flex justify-center items-center text-xs font-bold 520:text-base md:w-44 break-words lg:text-sm"><i class="fa-solid fa-location-dot mr-1 520:mr-3 md:mr-5"></i>{{provider.address}}</p>
+                    <p class="bg-gray-400 md:w-40 px-2 rounded-lg w-max flex justify-center items-center mb-1 text-xs font-bold border border-gray-950 520:text-base lg:text-sm"><i class="fa-solid fa-phone mr-1 520:mr-3 md:mr-5"></i>{{provider.phone}}</p>
+                    <p class="bg-yellow-300 border break-normal border-gray-950 px-2 rounded-lg w-max flex justify-center items-center text-xs font-bold 520:text-base md:w-44 lg:text-sm"><i class="fa-solid fa-location-dot mr-1 520:mr-3 md:mr-5"></i>{{provider.address}}</p>
                 </div>
             </div>
         </div>
