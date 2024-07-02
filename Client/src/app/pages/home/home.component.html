@@ -1,21 +1,24 @@
-<main class="w-[95%] mx-auto flex flex-col items-center md:grid md:grid-cols-2 md:gap-4 md:w-[90%] mt-36">
+<div (click)="orderBy()" class="flex ml-8 mb-10 relative cursor-pointer mt-36 w-max">
+    <p class="font-bold pr-6 pl-2 border-2 border-black rounded-xl">Filtrar por rating</p>
+    <div>
+        <i [class.text-yellow-400]="!ratingBoolean" class="fa text-sm absolute top-0 left-36 fa-caret-up"></i>
+        <i [class.text-yellow-400]="ratingBoolean" class="fa text-sm absolute top-2 left-36 fa-caret-down"></i>
+    </div>
+</div>
 
-    <style>
-        .yellow{
-            color: yellow;
-        }
-    </style>
+<main class="w-[95%] mx-auto flex flex-col items-center md:grid md:grid-cols-2 md:gap-4 md:w-[90%]">
+
     @for (product of products; track product) {
 
     <div class="flex mb-4"> <!--Product container-->
         <div class="relative">
             <img class="w-36 h-32 object-cover rounded-lg 520:w-56 520:h-44 lg:w-80 lg:h-56" [src]="product.imageUrl" alt="product image">
             <div class="absolute w-full bottom-0 left-0">
-                <i class="fa-solid fa-star text-gray-300 text-lg mr-2" [class.yellow]="calculateStarAverage(product) >=1"></i>
-                <i class="fa-solid fa-star text-gray-300 text-lg mr-2" [class.yellow]="calculateStarAverage(product) >=2"></i>
-                <i class="fa-solid fa-star text-gray-300 text-lg mr-2" [class.yellow]="calculateStarAverage(product) >=3"></i>
-                <i class="fa-solid fa-star text-gray-300 text-lg mr-2" [class.yellow]="calculateStarAverage(product) >=4"></i>
-                <i class="fa-solid fa-star text-gray-300 text-lg" [class.yellow]="calculateStarAverage(product) >=5"></i>
+                <i class="fa-solid fa-star text-gray-300 text-lg mr-2" [class.text-yellow-400]="calculateStarAverage(product) >=1"></i>
+                <i class="fa-solid fa-star text-gray-300 text-lg mr-2" [class.text-yellow-400]="calculateStarAverage(product) >=2"></i>
+                <i class="fa-solid fa-star text-gray-300 text-lg mr-2" [class.text-yellow-400]="calculateStarAverage(product) >=3"></i>
+                <i class="fa-solid fa-star text-gray-300 text-lg mr-2" [class.text-yellow-400]="calculateStarAverage(product) >=4"></i>
+                <i class="fa-solid fa-star text-gray-300 text-lg" [class.text-yellow-400]="calculateStarAverage(product) >=5"></i>
             </div>
         </div>
         <div class="flex flex-col">
@@ -25,7 +28,7 @@
             </div>
             <div class="flex justify-evenly items-center mt-2">
                 <a class="px-3 py-1 border-2 border-black rounded-lg font-bold hover:bg-gray-200 transition ease-in-out duration-300 lg:text-xl" [routerLink]="['/caribeWeb/product',product.id]"><i class="fa-solid fa-eye mr-1"></i>Ver</a>
-                <button (click)="addToSaved(product.id)" class="bg-yellow-200 px-2 py-1 border-2 border-black rounded-lg font-bold hover:bg-yellow-300 transition ease-in-out duration-300 lg:text-xl"><i class="fa-solid fa-heart mr-1"></i>Añadir</button>
+                <button [class.hidden]="isAdmin" (click)="addToSaved(product.id)" class="bg-yellow-200 px-2 py-1 border-2 border-black rounded-lg font-bold hover:bg-yellow-300 transition ease-in-out duration-300 lg:text-xl"><i class="fa-solid fa-heart mr-1"></i>Añadir</button>
             </div>
         </div>
     </div>

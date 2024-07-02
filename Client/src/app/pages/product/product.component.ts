@@ -24,7 +24,7 @@ export interface RateResponse{
 })
 export class ProductComponent implements OnInit{
 
-  
+  mode!:boolean;
   product!:Product;
   providers!:Provider[];
   rating:number=0;
@@ -168,6 +168,8 @@ export class ProductComponent implements OnInit{
   
   ngOnInit(): void {
       this.loadProductInfo();
+      this.productsService.booleanObservable
+      .subscribe(boolean => this.mode = boolean);
   }
 
   

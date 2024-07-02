@@ -93,7 +93,7 @@ export class AddProductComponent{
     this.files.splice(this.files.indexOf(event), 1);
   }
 
-  showInfo(field:string):boolean{
+  showInfo(field:string){
     const formField = this.form.get(field);
     let asdas;
     if(field==="description" || field==="title"){
@@ -101,7 +101,7 @@ export class AddProductComponent{
     }else if(field==="price"){
       asdas = (formField?.hasError('max') && formField!.touched) ? true : false;
     }
-    return! asdas;
+    return asdas;
   }
 
   constructor(private fb: FormBuilder,

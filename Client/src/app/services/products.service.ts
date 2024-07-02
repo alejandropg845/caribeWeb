@@ -16,9 +16,11 @@ export class ProductsService{
 
     private urlProducts = environment.api+"products";
     private urlProviders = environment.api+"provider/";
-
-
-    
+    private booleanSubject = new BehaviorSubject<boolean>(true);
+    booleanObservable = this.booleanSubject.asObservable();
+    setBoolean(value:boolean){
+        return this.booleanSubject.next(value);
+    }
 
     loadProducts():Observable<Product[]>{
         return this.http.get<Product[]>(this.urlProducts);

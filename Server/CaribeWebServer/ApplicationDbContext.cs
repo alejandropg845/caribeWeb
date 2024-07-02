@@ -24,7 +24,7 @@ namespace CaribeWebServer
                 new { Id=2, Name = "Bebidas artesanales" },
                 new { Id=3, Name = "Productos artesanales" },
                 new { Id=4, Name = "Ropa o vestimenta" }
-                );
+            );
         }
     }
 }

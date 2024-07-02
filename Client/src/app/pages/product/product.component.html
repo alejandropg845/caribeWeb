@@ -29,8 +29,8 @@
         <div class="flex flex-wrap justify-center items-center gap-2 w-[90%] mx-auto mt-4 520:justify-evenly">
             <p class="text-lg font-medium bg-yellow-300 rounded-lg px-1 520:text-2xl md:text-4xl">COP {{product.price}}$</p>
             <button (click)="addToSaved(product.id)" class="border-2 border-black px-2 py-1 rounded-lg font-bold 520:text-2xl md:text-xl"><i class="fa-solid fa-floppy-disk mr-2"></i>Añadir a guardados</button>
-            <button (click)="deleteProductFromDB(product.id)" class="border-2 border-red-500 text-red-500 px-2 py-1 rounded-lg font-bold 520:text-2xl md:text-xl"><i class="fa-solid fa-trash mr-2"></i>Eliminar</button>
-            <button [routerLink]="['/caribeWeb/edit_product',product.id]" class="border-2 border-gray-600 text-gray-600 px-2 py-1 rounded-lg font-bold 520:text-2xl md:text-xl"><i class="fa-regular fa-pen-to-square mr-2"></i>Editar</button>
+            <button *ngIf="mode" (click)="deleteProductFromDB(product.id)" class="border-2 border-red-500 text-red-500 px-2 py-1 rounded-lg font-bold 520:text-2xl md:text-xl"><i class="fa-solid fa-trash mr-2"></i>Eliminar</button>
+            <button *ngIf="mode" [routerLink]="['/caribeWeb/edit_product',product.id]" class="border-2 border-gray-600 text-gray-600 px-2 py-1 rounded-lg font-bold 520:text-2xl md:text-xl"><i class="fa-regular fa-pen-to-square mr-2"></i>Editar</button>
         </div>
          
     </div>

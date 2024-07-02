@@ -43,7 +43,7 @@ export class AddProvidersComponent implements AfterViewInit{
 
   providersLocalStorage:createProvider[] = JSON.parse(localStorage.getItem('providers')!)
 
-  validatePhone(){
+  validatePhone():boolean{
     const formPhone:string = this.ProviderForm.get('phone')?.value;
     let isValid:boolean = true;
     for (let i = 0; i < formPhone.length; i++) {
@@ -58,6 +58,7 @@ export class AddProvidersComponent implements AfterViewInit{
     if(isValid) this.ProviderForm.get('phone')?.setErrors(null);
     else this.ProviderForm.get('phone')?.setErrors({'invalidPhone': true});
   
+    return isValid;
   }
 
   showInfo(field:string){
@@ -71,7 +72,11 @@ export class AddProvidersComponent implements AfterViewInit{
   }
 
   saveProvider(){
-    this.validatePhone();
+    if(!this.validatePhone()){
+      this.ProviderForm.markAllAsTouched();
+      this.toastr.error("Campos faltantes o con errores", "Error"); 
+      return;
+    }
     if(!this.ProviderForm.valid){
       this.toastr.error("Campos faltantes o con errores", "Error"); 
       this.ProviderForm.markAllAsTouched();

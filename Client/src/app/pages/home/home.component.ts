@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, Input } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { Product } from '../../interfaces/product.interface';
 import { ToastrService } from 'ngx-toastr';
@@ -14,9 +14,10 @@ export class HomeComponent implements AfterViewInit{
   rating:number = 4;
   productsLocalStorage:Product[] = JSON.parse(localStorage.getItem('savedProducts')!) || [];
 
+
   loadProductsFromService(){
     this.productsService.loadProducts()
-    .subscribe(products => this.products = products)
+    .subscribe(products => this.products = products);
   }
 
   calculateStarAverage(product:Product){
@@ -48,10 +49,21 @@ export class HomeComponent implements AfterViewInit{
     });
   }
 
+  ratingBoolean:boolean = true;
+  orderBy(){
+    this.ratingBoolean = !this.ratingBoolean;
+    (this.ratingBoolean) ? this.products.sort((a,b) => a.rating - b.rating)
+    : this.products.sort((a,b) => b.rating - a.rating);
+  }
+
+  isAdmin!:boolean;
+
   constructor(private productsService:ProductsService, private toastr:ToastrService){}
 
   ngAfterViewInit(){
     this.loadProductsFromService();
+    this.productsService.booleanObservable
+    .subscribe(bool => this.isAdmin = bool);
   }
 
 }

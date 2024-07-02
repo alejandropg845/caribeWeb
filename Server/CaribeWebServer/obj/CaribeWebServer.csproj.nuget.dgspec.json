@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Alejandro Páez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\CaribeWebServer.csproj": {}
+    "C:\\Users\\garri\\OneDrive\\Escritorio\\Alex\\caribeWeb\\Server\\CaribeWebServer\\CaribeWebServer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Alejandro Páez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\CaribeWebServer.csproj": {
+    "C:\\Users\\garri\\OneDrive\\Escritorio\\Alex\\caribeWeb\\Server\\CaribeWebServer\\CaribeWebServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Alejandro Páez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\CaribeWebServer.csproj",
+        "projectUniqueName": "C:\\Users\\garri\\OneDrive\\Escritorio\\Alex\\caribeWeb\\Server\\CaribeWebServer\\CaribeWebServer.csproj",
         "projectName": "CaribeWebServer",
-        "projectPath": "C:\\Users\\Alejandro Páez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\CaribeWebServer.csproj",
-        "packagesPath": "C:\\Users\\Alejandro Páez\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Alejandro Páez\\Desktop\\Alex\\CaribeWeb\\Server\\CaribeWebServer\\obj\\",
+        "projectPath": "C:\\Users\\garri\\OneDrive\\Escritorio\\Alex\\caribeWeb\\Server\\CaribeWebServer\\CaribeWebServer.csproj",
+        "packagesPath": "C:\\Users\\garri\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\garri\\OneDrive\\Escritorio\\Alex\\caribeWeb\\Server\\CaribeWebServer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Alejandro Páez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\garri\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
